@@ -1,0 +1,35 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: "Avgarde: Item module"
+servers:
+  - url: http://{hostname}:{port}/api
+    variables:
+      hostname:
+        default: localhost
+      port:
+        default: "8080"
+paths:
+  /item:
+    get:
+      operationId: allItems
+      responses:
+        200:
+          description: Successfully got list of all tiems
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+

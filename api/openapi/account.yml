@@ -1,0 +1,33 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: "Avgarde: Account module"
+servers:
+  - url: http://{hostname}:{port}/api
+    variables:
+      hostname:
+        default: localhost
+      port:
+        default: "8080"
+paths:
+  /account/current:
+    get:
+      operationId: currentAccount
+      responses:
+        200:
+          description: Successfully got currently logged in account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+
